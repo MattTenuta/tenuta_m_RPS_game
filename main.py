@@ -6,8 +6,28 @@ player = False
 choices = ["rock", "paper", "scissors"]
 
 #these lives need to decrement when a player loses a round
-playerLives = 2
-computerLives = 2
+playerLives = 5
+computerLives = 5
+
+
+def winorlose(status):
+    print("You " + status)
+
+    choice = input("Do you want to play again? y/n: ")
+
+    global playerLives
+    global computerLives
+    global player
+
+    if choice == "n":
+        print("========= see ya! (loser) =========")
+        exit()
+        
+    elif choice == "y":
+            playerLives = 5
+            computerLives = 5
+            player = False
+
 
 # set up pur game loop so that we can keep playing and not exit
 while player is False: 
@@ -48,12 +68,10 @@ while player is False:
     print("player life count: " + str(playerLives))
     print("computer life count: " + str(computerLives))
 
-    if playerLives == 0 or computerLives == 0:
-        print("Gave Over! Do you want to play again?")
-
-        choice = input("Do you want to play again? y/n: ")
-
-        if choice is "n":
-            exit()
-
+    if playerLives == 0:
+        winorlose("Lost")
+        
+    elif computerLives == 0:
+        winorlose("Won")
+        
     player = False
