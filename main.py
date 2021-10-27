@@ -1,45 +1,49 @@
 from random import randint
+from gameComponents import winLose, gameVars
 
-# player will be the weapon the player chooses via input
-player = input("Choose your weapon: Rock, Paper or Scissors: ")
+# set up pur game loop so that we can keep playing and not exit
+while gameVars.player is False: 
+    gameVars.player = input("Choose your weapon: Rock, Paper or Scissors: ")
+    gameVars.computer = gameVars.choices[randint(0, 2)]
 
-choices = ["rock", "paper", "scissors"]
+    print("player chose: " + gameVars.player)
+    print("computer chose: " + gameVars.computer)
 
-computer = choices[randint(0, 2)]
+    if gameVars.computer == gameVars.player:
+        # tie - nothing else to compare, so it'll exit
+        print("tie! try again")
 
-#these lives need to decrement when a player loses a round
-playerLives = 5
-computerLives = 5
+    elif gameVars.player == "rock":
+        if gameVars.computer == "paper":
+            print("you lose!")
+            gameVars.playerLives = gameVars.playerLives - 1
+        else:
+            print("you win!")
+            gameVars.computerLives = gameVars.computerLives - 1
 
-print("player chose: " + player)
-print("computer chose: " + computer)
+    elif gameVars.player == "paper":
+        if gameVars.computer == "scissors":
+            print("you lose!")
+            gameVars.playerLives = gameVars.playerLives - 1
+        else:
+            print("you win!")
+            gameVars.computerLives = gameVars.computerLives - 1
 
-if (computer == player):
-    # tie - nothing else to compare, so it'll exit
-    print("tie! try again")
+    elif gameVars.player == "scissors":
+        if gameVars.computer == "rock":
+            print("you lose!")
+            gameVars.playerLives = gameVars.playerLives - 1
+        else:
+            print("you win!")
 
-elif (player == "rock"):
-    if (computer == "paper"):
-        print("you lose!")
-        playerLives = playerLives - 1
-    else:
-        print("you win!")
-        computerLives = computerLives - 1
+            gameVars.computerLives = gameVars.computerLives - 1
+    print("player life count: " + str(gameVars.playerLives))
+    print("computer life count: " + str(gameVars.computerLives))
 
-elif (player == "paper"):
-    if (computer == "scissors"):
-        print("you lose!")
-        playerLives = playerLives - 1
-    else:
-        print("you win!")
-        computerLives = computerLives - 1
-
-elif (player == "scissors"):
-    if (computer == "rock"):
-        print("you lose!")
-        playerLives = playerLives - 1
-    else:
-        print("you win!")
-        computerLives = computerLives - 1
-print("player life count: " + str(playerLives))
-print("computer life count: " + str(computerLives))
+    if gameVars.playerLives == 0:
+        winLose.winorlose("Lost")
+        
+    elif gameVars.computerLives == 0:
+        winLose.winorlose("Won")
+        
+    gameVars.player = False
