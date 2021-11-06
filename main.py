@@ -35,7 +35,6 @@ while gameVars.player is False:
             gameVars.playerLives = gameVars.playerLives - 1
         else:
             print("you win!")
-
             gameVars.computerLives = gameVars.computerLives - 1
     print("player life count: " + str(gameVars.playerLives))
     print("computer life count: " + str(gameVars.computerLives))
