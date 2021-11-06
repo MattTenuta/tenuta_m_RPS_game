@@ -2,11 +2,11 @@
 
 # Rock Paper Scissors Game with Python!
 
-TODO: Write a project description
+I was tasked with creating a rock paper scissors game using python
 
 ## Installation
 
-TODO: Describe the installation process
+I wrote python and followed Trevors lessons until I got a working game
 
 
 ## Contributing
@@ -20,8 +20,7 @@ TODO: Describe the installation process
 
 ## Credits
 
-TODO: Write credits
-// give accreditation to any resources / authors whose work you're using
+None
 
 ## License
 
